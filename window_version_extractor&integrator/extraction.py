@@ -66,8 +66,14 @@ def parallel_frame_extraction(video_path, output_folder, fps, num_processes):
         p.join()
 
     global_frame_offset = 0
+    part_folders = []
     while not queue.empty():
         part_output_folder, frame_count = queue.get()
+        part_folders.append((part_output_folder, frame_count))
+
+    part_folders.sort(key=lambda x: int(x[0].split('_')[-1]))  # 按进程号排序
+
+    for part_output_folder, frame_count in part_folders:
         frame_files = sorted([f for f in os.listdir(part_output_folder) if f.endswith('.png')])
         for i, frame_file in enumerate(frame_files):
             new_name = os.path.join(output_folder, f'{os.path.basename(video_path)}_frame_{global_frame_offset + i:07d}.png')
