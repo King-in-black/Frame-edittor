@@ -1,5 +1,7 @@
-mac OS (silicon) version of extractor and integrator
+mac OS (silicon) version of extractor and integrator (stable, working)
 
-stable, working
+Make sure to install FFmpeg using 'terminal' (homebrew may be required to download. Follow the tutorial below.
+
+https://phoenixnap.com/kb/ffmpeg-mac
 
 Version conversion by BH
